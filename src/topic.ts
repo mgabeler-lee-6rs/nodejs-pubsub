@@ -177,7 +177,7 @@ class Topic {
    *   const apiResponse = data[1];
    * });
    */
-  createSubscription(name, options, callback) {
+  createSubscription(name, options?, callback?) {
     this.pubsub.createSubscription(this, name, options, callback);
   }
   /**
