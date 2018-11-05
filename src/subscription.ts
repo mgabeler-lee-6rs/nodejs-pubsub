@@ -23,8 +23,8 @@ import * as is from 'is';
 const snakeCase = require('lodash.snakecase');
 
 const IAM = require('./iam');
-const Snapshot = require('./snapshot');
-const Subscriber = require('./subscriber');
+import Snapshot = require('./snapshot');
+import Subscriber = require('./subscriber');
 
 /**
  * A Subscription object will give you access to your Cloud Pub/Sub
@@ -141,6 +141,12 @@ const Subscriber = require('./subscriber');
  * subscription.removeListener('message', onMessage);
  */
 class Subscription extends Subscriber {
+  Promise;
+  pubsub;
+  projectId;
+  create;
+  iam;
+
   constructor(pubsub, name, options) {
     options = options || {};
     super(options);
@@ -475,7 +481,7 @@ class Subscription extends Subscriber {
       },
       (err, apiResponse) => {
         if (!err) {
-          this.metadata = apiResponse;
+          this['metadata'] = apiResponse;
         }
         callback(err, apiResponse);
       }
@@ -730,4 +736,4 @@ promisifyAll(Subscription, {
   exclude: ['snapshot'],
 });
 
-module.exports = Subscription;
+export = Subscription;

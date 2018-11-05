@@ -459,4 +459,4 @@ class ConnectionPool extends EventEmitter {
   }
 }
 
-module.exports = ConnectionPool;
+export = ConnectionPool;

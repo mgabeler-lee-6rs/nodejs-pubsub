@@ -253,4 +253,4 @@ promisifyAll(Publisher, {
   singular: true,
 });
 
-module.exports = Publisher;
+export = Publisher;

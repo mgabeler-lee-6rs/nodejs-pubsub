@@ -214,4 +214,4 @@ class Snapshot {
  */
 promisifyAll(Snapshot);
 
-module.exports = Snapshot;
+export = Snapshot;

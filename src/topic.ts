@@ -23,7 +23,7 @@ import * as extend from 'extend';
 import * as is from 'is';
 
 const IAM = require('./iam');
-const Publisher = require('./publisher');
+import Publisher = require('./publisher');
 
 /**
  * A Topic object allows you to interact with a Cloud Pub/Sub topic.
@@ -601,4 +601,4 @@ promisifyAll(Topic, {
   exclude: ['publisher', 'subscription'],
 });
 
-module.exports = Topic;
+export = Topic;

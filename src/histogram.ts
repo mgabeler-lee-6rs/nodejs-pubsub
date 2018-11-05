@@ -28,7 +28,7 @@ class Histogram {
   options;
   data;
   length;
-  constructor(options) {
+  constructor(options?) {
     this.options = extend(
       {
         min: 10000,
@@ -79,4 +79,4 @@ class Histogram {
   }
 }
 
-module.exports = Histogram;
+export = Histogram;

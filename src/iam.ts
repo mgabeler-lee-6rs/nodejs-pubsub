@@ -326,4 +326,4 @@ class IAM {
  */
 promisifyAll(IAM);
 
-module.exports = IAM;
+export = IAM;

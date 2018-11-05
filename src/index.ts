@@ -26,11 +26,17 @@ const {grpc} = new gax.GrpcClient();
 import * as is from 'is';
 
 const PKG = require('../../package.json');
-const v1 = require('./v1');
+import v1 = require('./v1');
 
-const Snapshot = require('./snapshot');
-const Subscription = require('./subscription');
-const Topic = require('./topic');
+import Snapshot = require('./snapshot');
+import Subscription = require('./subscription');
+import Topic = require('./topic');
+export {
+  Snapshot,
+  Subscription,
+  Topic,
+  v1,
+};
 
 /**
  * @type {string} - Project ID placeholder.
@@ -93,7 +99,7 @@ const PROJECT_ID_PLACEHOLDER = '{{projectId}}';
  * region_tag:pubsub_quickstart_create_topic
  * Full quickstart example:
  */
-class PubSub {
+export default class PubSub {
   options;
   isEmulator;
   api;
@@ -240,7 +246,7 @@ class PubSub {
           callback(err, null, resp);
           return;
         }
-        subscription.metadata = resp;
+        subscription['metadata'] = resp;
         callback(null, subscription, resp);
       }
     );
@@ -414,7 +420,7 @@ class PubSub {
         if (snapshots) {
           arguments[1] = snapshots.map(function(snapshot) {
             const snapshotInstance = self.snapshot(snapshot.name);
-            snapshotInstance.metadata = snapshot;
+            snapshotInstance['metadata'] = snapshot;
             return snapshotInstance;
           });
         }
@@ -514,7 +520,7 @@ class PubSub {
         if (subscriptions) {
           arguments[1] = subscriptions.map(function(sub) {
             const subscriptionInstance = self.subscription(sub.name);
-            subscriptionInstance.metadata = sub;
+            subscriptionInstance['metadata'] = sub;
             return subscriptionInstance;
           });
         }
@@ -754,11 +760,11 @@ class PubSub {
    *
    * const topic = pubsub.topic('my-topic');
    */
-  topic(name, options?) {
+  topic(name) {
     if (!name) {
       throw new Error('A name must be specified for a topic.');
     }
-    return new Topic(this, name, options);
+    return new Topic(this, name);
   }
 }
 
@@ -929,4 +935,4 @@ module.exports = PubSub;
  * @property {constructor} SubscriberClient
  *     Reference to {@link v1.SubscriberClient}.
  */
-module.exports.v1 = v1;
+PubSub['v1'] = v1;

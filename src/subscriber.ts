@@ -26,8 +26,8 @@ import * as extend from 'extend';
 import * as is from 'is';
 import * as os from 'os';
 
-const ConnectionPool = require('./connection-pool');
-const Histogram = require('./histogram');
+import ConnectionPool = require('./connection-pool');
+import Histogram = require('./histogram');
 
 /**
  * @type {number} - The maximum number of ackIds to be sent in acknowledge/modifyAckDeadline
@@ -195,7 +195,7 @@ class Subscriber extends EventEmitter {
    * //-
    * Subscriber.close().then(() => {});
    */
-  close(callback) {
+  close(callback?) {
     this.userClosed_ = true;
     const inventory = this.inventory_;
     inventory.lease.length = inventory.bytes = 0;
@@ -520,4 +520,4 @@ class Subscriber extends EventEmitter {
  */
 promisifyAll(Subscriber);
 
-module.exports = Subscriber;
+export = Subscriber;
