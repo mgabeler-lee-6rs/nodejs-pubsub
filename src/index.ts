@@ -32,6 +32,7 @@ import Snapshot = require('./snapshot');
 import Subscription = require('./subscription');
 import Topic = require('./topic');
 export {
+  PubSub,
   Snapshot,
   Subscription,
   Topic,
