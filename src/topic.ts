@@ -256,7 +256,7 @@ class Topic {
    *   const exists = data[0];
    * });
    */
-  exists(callback?) {
+  exists(callback?): any {
     this.getMetadata(function(err) {
       if (!err) {
         callback(null, true);

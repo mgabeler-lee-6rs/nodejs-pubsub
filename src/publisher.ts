@@ -149,7 +149,7 @@ class Publisher {
    * //-
    * publisher.publish(data).then((messageId) => {});
    */
-  publish(data, attributes, callback) {
+  publish(data, attributes, callback): any {
     if (!(data instanceof Buffer)) {
       throw new TypeError('Data must be in the form of a Buffer.');
     }
