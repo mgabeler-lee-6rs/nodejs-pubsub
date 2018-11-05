@@ -31,11 +31,13 @@ import v1 = require('./v1');
 import Snapshot = require('./snapshot');
 import Subscription = require('./subscription');
 import Topic = require('./topic');
+import Publisher = require('./publisher');
 export {
   PubSub,
   Snapshot,
   Subscription,
   Topic,
+  Publisher,
   v1,
 };
 

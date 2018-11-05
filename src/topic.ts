@@ -138,7 +138,7 @@ class Topic {
    *   const apiResponse = data[1];
    * });
    */
-  create(gaxOpts, callback) {
+  create(gaxOpts?, callback?) {
     this.pubsub.createTopic(this.name, gaxOpts, callback);
   }
   /**
@@ -207,7 +207,7 @@ class Topic {
    *   const apiResponse = data[0];
    * });
    */
-  delete(gaxOpts, callback) {
+  delete(gaxOpts?, callback?) {
     if (is.fn(gaxOpts)) {
       callback = gaxOpts;
       gaxOpts = {};
@@ -256,7 +256,7 @@ class Topic {
    *   const exists = data[0];
    * });
    */
-  exists(callback) {
+  exists(callback?) {
     this.getMetadata(function(err) {
       if (!err) {
         callback(null, true);
@@ -308,7 +308,7 @@ class Topic {
    *   const apiResponse = data[1];
    * });
    */
-  get(gaxOpts, callback) {
+  get(gaxOpts?, callback?) {
     if (is.fn(gaxOpts)) {
       callback = gaxOpts;
       gaxOpts = {};
@@ -361,7 +361,7 @@ class Topic {
    *   const apiResponse = data[0];
    * });
    */
-  getMetadata(gaxOpts, callback?) {
+  getMetadata(gaxOpts?, callback?) {
     if (is.fn(gaxOpts)) {
       callback = gaxOpts;
       gaxOpts = {};
@@ -419,7 +419,7 @@ class Topic {
    *   const subscriptions = data[0];
    * });
    */
-  getSubscriptions(options, callback) {
+  getSubscriptions(options?, callback?) {
     const self = this;
     if (is.fn(options)) {
       callback = options;
@@ -485,7 +485,7 @@ class Topic {
    *   }
    * });
    */
-  publisher(options) {
+  publisher(options?) {
     return new Publisher(this, options);
   }
   /**
